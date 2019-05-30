@@ -442,7 +442,7 @@
 </blockquote>
 <h2 id="11-pemasangan-scrapy">1.1 pemasangan scrapy</h2>
 <p>pastikan sudah memasang <a href="https://www.python.org/">python</a> versi terbaru dan melakukan centang pada pip </p>
-<p><img alt="gambar 1" src="D:\kampus\semester 8\penambangan web\tutorialCrawler\gambar\gambar 1.PNG" /></p>
+<p><img alt="gambar 1" src="assets\images\gambar 1.PNG" /></p>
 <p>agar bisa menggunakan perintah pip di cmd</p>
 <p>setelah memasang python , maka install scrapy mengggunakan perintah <code>pip install scrapy</code></p>
 <p>jika gagal menginstall scrapy silahkan install terlebih dahulu yang diminta scrapy bisa saja .net framework ataupun visual studio 14 tergantung keadaan komputer masing masing </p>
@@ -455,7 +455,7 @@
 <p>startpage berguna memberi tahu  crawler link awal tempat dia mulai menjelajah seperti berikut <code>start_urls = ['https://id.wikipedia.org/wiki/Bank_Indonesia']</code> di skenario ini saya akan melakukan crawl <strong>link internal</strong> wikipedia dan akan dibuat graphnya untuk menghitung page rank masing masing halaman</p>
 <h2 id="15-mengatur-data-yang-akan-diambil">1.5 mengatur data yang akan diambil</h2>
 <p>data yang akan diambil adalah link internal wikipedia indonesia yang akan disusun menjadi graph , karena saya tidak mengatur rule pada project ini maka kita gunakan method default scrapy  yaitu  <code>parse</code>  disini saya juga menggunakan bantuan beautifulsoup untuk antuan extraksi tag html , dan juga link wikipedia perlu di perbaiki karena jika di crawl langsung disimpan akan seperti ini </p>
-<p><img alt="1558928886876" src="C:\Users\zainal\AppData\Roaming\Typora\typora-user-images\1558928886876.png" /></p>
+<p><img alt="1558928886876" src="assets\images\1558928886876.png" /></p>
 <p>maka diperlukan perbaikan link terlebih dahulu sebelum disimpan dan dijelajahi</p>
 <pre><code class="python">    def parse(self, response):
         global situsKe
@@ -500,16 +500,16 @@
 <p>untuk crawling data bisa menggunakan perintah <code>scrapy crawl --nolog TugasAkhir -o data.csv -t csv</code>  data hasil crawling akan disimpan di data.csv </p>
 <p>proses crawling seperti berikut tunggu hingga selesai</p>
 <p><strong>perintah sama dengan tutorial sebelumnya karena memang ini project sebellumnya yang dimodifikasi</strong></p>
-<p><img alt="1558929375374" src="C:\Users\zainal\AppData\Roaming\Typora\typora-user-images\1558929375374.png" /></p>
+<p><img alt="1558929375374" src="assets\images\1558929375374.png" /></p>
 <p>setelah selesai data akan menjadi seperti berikut :</p>
-<p><img alt="1558929728350" src="C:\Users\zainal\AppData\Roaming\Typora\typora-user-images\1558929728350.png" /></p>
+<p><img alt="1558929728350" src="assets\images\1558929728350.png" /></p>
 <h2 id="2-migrasi-csv-ke-sqlite">2. migrasi csv ke sqlite</h2>
 <p>saya menggunakan tools <a href="https://sqlitebrowser.org/">db browser for sqlite</a> disini sangat mudah  klik new database ketika muncul  pop up untuk mengisi field apa saja yang ada di db close saja </p>
-<p><img alt="1555675137009" src="C:\Users\zainal\AppData\Roaming\Typora\typora-user-images\1555675137009.png" /></p>
+<p><img alt="1555675137009" src="assets\images\1555675137009.png" /></p>
 <p>setelah itu di menu file pilih import table form csv lali pilih file csv tadi dan lakukan proses migrasi</p>
-<p><img alt="1558929838634" src="C:\Users\zainal\AppData\Roaming\Typora\typora-user-images\1558929838634.png" /></p>
+<p><img alt="1558929838634" src="assets\images\1558929838634.png" /></p>
 <p>tunggu hingga proses selesai </p>
-<p><img alt="1555675509234" src="C:\Users\zainal\AppData\Roaming\Typora\typora-user-images\1555675509234.png" /></p>
+<p><img alt="1555675509234" src="assets\images\1555675509234.png" /></p>
 <h2 id="3-membuat-graph-menggunakan-networkx">3. membuat graph menggunakan networkx</h2>
 <p>saya asumsikan data yang akan kita olah sudah ada di sqlite  , saya  membuat file bernama <code>networkx.py</code> yang digunakan untuk proses pembuatan graph dan menghitung pagerank</p>
 <pre><code class="python">import networkx as nx
@@ -616,7 +616,7 @@ plt.show()
 </code></pre>
 
 <p>maka graph akan tampil</p>
-<p><img alt="1559223397569" src="C:\Users\zainal\AppData\Roaming\Typora\typora-user-images\1559223397569.png" /></p>
+<p><img alt="1559223397569" src="assets\images\1559223397569.png" /></p>
 <h2 id="4-menghitung-pagerank-dengan-networkx">4. menghitung pagerank dengan networkx</h2>
 <p>dari  graph yang telah disusun sebelumnya kita bisa menghitung pagerank menggunkan code berikut</p>
 <pre><code class="python">pr =  nx.pagerank(graph) #menghitung pagerank 
@@ -629,7 +629,7 @@ print(&quot;3. &quot;, sorted_pr[2])
 
 </code></pre>
 
-<p><img alt="1559226072683" src="C:\Users\zainal\AppData\Roaming\Typora\typora-user-images\1559226072683.png" /></p>
+<p><img alt="1559226072683" src="assets\images\1559226072683.png" /></p>
 <p>full code ada di repo berikut  : <a href="https://github.com/ariefzzz/pagerank_networkx/tree/master/source">pagerank_networkx</a> </p>
                 
                   
